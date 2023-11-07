@@ -18,7 +18,7 @@ const UCM = 'tfalT8Z-88riNtoXdF5ldaBtmsfcSmbMqWLh2DHJIbg'
 /**
  * @callback Payment
  * @param {string} contract - contract address
- * @returns {Promise<Boolean>}
+ * @returns {Promise<number>}
  */
 
 /**
@@ -66,6 +66,7 @@ export default {
 				return of({ contract })
 					.chain(getLicenseInfo)
 					.chain(isPayPerView)
+					.chain(({ payment }) => payment)
 					.toPromise()
 			},
 			isLicensed(contract, addr) {
