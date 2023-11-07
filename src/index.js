@@ -16,7 +16,7 @@ const UCM = 'tfalT8Z-88riNtoXdF5ldaBtmsfcSmbMqWLh2DHJIbg'
  */
 
 /**
- * @callback HasLicense
+ * @callback Payment
  * @param {string} contract - contract address
  * @returns {Promise<Boolean>}
  */
@@ -37,7 +37,7 @@ const UCM = 'tfalT8Z-88riNtoXdF5ldaBtmsfcSmbMqWLh2DHJIbg'
 
 /**
  * @typedef {Object} Payments
- * @property {HasLicense} hasLicense
+ * @property {Payment} payment
  * @property {Licensed} isLicensed
  * @property {Pay} pay
  */
@@ -62,7 +62,7 @@ export default {
 		const argql = arGql(`${gateway || 'https://arweave.net'}/graphql`)
 
 		return {
-			hasLicense(contract) {
+			payment(contract) {
 				return of({ contract })
 					.chain(getLicenseInfo)
 					.chain(isPayPerView)
