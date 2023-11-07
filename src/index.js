@@ -66,7 +66,7 @@ export default {
 				return of({ contract })
 					.chain(getLicenseInfo)
 					.chain(isPayPerView)
-					.chain(({ payment }) => payment)
+					.chain(({ payment }) => Resolved(payment))
 					.toPromise()
 			},
 			isLicensed(contract, addr) {
