@@ -73,10 +73,8 @@ export default {
 				return of({ contract, addr })
 					.chain(getLicenseInfo)
 					.chain(findInteractionsByAddress)
-
 					.chain(getValidity)
 					.map(allValid)
-					.bichain(_ => Resolved(false), Resolved)
 					.toPromise()
 			},
 			async pay(contract, addr) {
