@@ -181,7 +181,10 @@ export default {
 						path(['data', 'transactions', 'edges'])
 					)
 				)
-				.chain(interactions => interactions.length > 0 ? Resolved({ ...ctx, interactions }) : Rejected(false))
+				.chain(interactions => interactions.length > 0
+					? Resolved({ ...ctx, interactions })
+					: Rejected({ ok: false, message: 'No Interactions Found' })
+				)
 		}
 
 		function getLicenseInfo(ctx) {
